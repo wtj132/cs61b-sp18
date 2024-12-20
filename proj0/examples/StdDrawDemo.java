@@ -1,4 +1,4 @@
-/* 
+package examples;/*
  *
  * Make sure to see the more detailed description of
  * StdDraw at: http://introcs.cs.princeton.edu/java/15inout/ 
@@ -8,6 +8,8 @@
  * Or you can see the full documentation at:
  *   http://introcs.cs.princeton.edu/java/15inout/javadoc/StdDraw.html
  */
+
+import examples.StdRandom;
 
 public class StdDrawDemo {
 	public static String imageToDraw = "advice.png";
@@ -97,7 +99,7 @@ public class StdDrawDemo {
 	public static void main(String[] args) {
 		
 		drawThree();
-		drawRandom();
+//		drawRandom();
 		drawZoom();
 	}
 } 

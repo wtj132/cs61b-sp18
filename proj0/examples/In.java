@@ -5,7 +5,7 @@
  *  Reads in data of various types from standard input, files, and URLs.
  *
  *************************************************************************/
-
+package examples;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
@@ -47,6 +47,7 @@ import java.util.regex.Pattern;
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  */
+
 public final class In {
     
     private Scanner scanner;
