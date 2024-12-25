@@ -1,10 +1,10 @@
-public class LinkedListDeque<unknow> {
+public class LinkedListDeque<T> {
     public class intnode {
         intnode prev;
-        unknow value;
+        T value;
         intnode next;
 
-        public intnode(unknow x) {
+        public intnode(T x) {
             prev = null;
             next = null;
             value = x;
@@ -20,7 +20,7 @@ public class LinkedListDeque<unknow> {
         size = 0;
     }
 
-    public void addFirst(unknow x) {
+    public void addFirst(T x) {
         intnode first = new intnode(x);
         first.next = sential.next;
         first.prev = sential;
@@ -31,7 +31,7 @@ public class LinkedListDeque<unknow> {
         size += 1;
     }
 
-    public void addLast(unknow x) {
+    public void addLast(T x) {
         intnode corrent = new intnode(x);
         last.next = corrent;
         corrent.prev = last;
@@ -39,7 +39,7 @@ public class LinkedListDeque<unknow> {
         size += 1;
     }
 
-    public unknow get(int x) {
+    public T get(int x) {
         intnode corrent = sential;
         if (x != 0) {
             for (int i = 0; i < x; i++) {
@@ -53,7 +53,7 @@ public class LinkedListDeque<unknow> {
     }
 
     private intnode c=sential;
-    public unknow getRecursive(int x){
+    public T getRecursive(int x){
         if(x==0){
             return c.value;
         }
