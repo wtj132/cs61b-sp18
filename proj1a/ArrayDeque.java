@@ -39,14 +39,18 @@ public class ArrayDeque <T>{
             System.arraycopy(list,0,new_list,0,list.length);
             list=new_list;
         }
-        public void removeLast(){
-            index-=1;
+        public T removeLast(){
+            int last=index;
+            index--;
+            return list[index];
         }
-        public void removeFirst(){
+        public T removeFirst(){
             T[] new_list=(T[]) new Object[list.length-1];
             System.arraycopy(list,1,new_list,0,list.length-1);
+            T first=list[0];
             list=new_list;
             index-=1;
+            return first;
         }
         public boolean isEmpty(){
             return index==0;

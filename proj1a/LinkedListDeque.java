@@ -60,18 +60,22 @@ public class LinkedListDeque<T> {
         return getRecursive(x-1);
     }
 
-    public void removeFirst(){
+    public T removeFirst(){
+        T first_value=sential.next.value;
         sential.next=sential.next.next;
         if(sential.next!=null) {
             sential.next.prev = sential;
         }
         size-=1;
+        return first_value;
     }
 
-    public void removeLast(){
+    public T removeLast(){
+        T last_vlaue=last.value;
         last.prev.next=null;
         last=last.prev;
         size-=1;
+        return last_vlaue;
     }
 
     public int size(){
