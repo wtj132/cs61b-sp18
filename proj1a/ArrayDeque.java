@@ -51,7 +51,7 @@ public class ArrayDeque <T>{
             if(need_resizedown()){
                 resizedown();
             }
-            return list[last];
+            return list[last-1];
         }
         public T removeFirst(){
             if(isEmpty()){
@@ -87,9 +87,13 @@ public class ArrayDeque <T>{
         }
 
 
-    public static void main(String[] args){
-            ArrayDeque<Integer> list=new ArrayDeque<>();
-            System.out.println(list.get(0));
-    }
+//    public static void main(String[] args){
+//            ArrayDeque<Integer> list=new ArrayDeque<>();
+//            list.addFirst(1);
+//            list.addFirst(2);
+//            list.addLast(3);
+//            System.out.println(list.removeLast());
+//            System.out.println(list.get(0));
+//    }
 
 }

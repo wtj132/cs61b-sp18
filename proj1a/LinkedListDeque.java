@@ -1,5 +1,5 @@
 public class LinkedListDeque<T> {
-    public class intnode {
+    private class intnode {
         intnode prev;
         T value;
         intnode next;
@@ -27,20 +27,18 @@ public class LinkedListDeque<T> {
         intnode first = new intnode(x);
         first.next = sential.next;
         first.prev = sential;
-        if (sential.next == null) {
-            last = first;
-        }
         sential.next = first;
+        if(isEmpty()){
+            last=first;
+        }
         size += 1;
     }
 
     public void addLast(T x) {
-        intnode corrent = new intnode(x);
-        if(last.prev==null){
-            last=corrent;
-            last.prev=sential;
-            sential.next=last;
+        if(isEmpty()){
+            addFirst(x);
         }else {
+            intnode corrent = new intnode(x);
             last.next = corrent;
             corrent.prev = last;
             last = corrent;
@@ -49,16 +47,16 @@ public class LinkedListDeque<T> {
     }
 
     public T get(int x) {
-        intnode corrent = sential;
-        if (x != 0) {
-            for (int i = 0; i < x; i++) {
-                if (corrent.next != null) {
-                    corrent = corrent.next;
-                }
-            }return corrent.value;
-        }else{
-            return corrent.next.value;
+        if(isEmpty()){
+            return null;
         }
+        intnode corrent = sential.next;
+        for (int i = 0; i < x; i++) {
+            if (corrent.next != null) {
+                corrent = corrent.next;
+            }
+        }return corrent.value;
+
     }
 
 
@@ -76,7 +74,6 @@ public class LinkedListDeque<T> {
 
     public T removeFirst(){
         if(isEmpty()){
-            last=new intnode(null);
             return null;
         }
         T first_value=sential.next.value;
@@ -93,7 +90,6 @@ public class LinkedListDeque<T> {
 
     public T removeLast(){
         if(isEmpty()){
-            last=new intnode(null);
             return null;
         }
         T last_value=last.value;
@@ -121,14 +117,17 @@ public class LinkedListDeque<T> {
             }while (corrent.next!=null);
         }
     }
-    public static void main(String[] args){
-        LinkedListDeque<Integer> list=new LinkedListDeque<>();
-        list.addLast(0);
-//        System.out.println(list.removeFirst());
-        list.addFirst(2);
-//        System.out.println(list.removeFirst());
-        System.out.println(list.getRecursive(0));
-
-    }
+//    public static void main(String[] args){
+//        LinkedListDeque<Integer> list=new LinkedListDeque<>();
+//        list.addLast(0);
+//        list.addLast(1);
+//        list.addLast(3);
+////        System.out.println(list.removeFirst());
+//        list.addFirst(5);
+//        list.addFirst(2);
+////        System.out.println(list.removeFirst());
+//        System.out.println(list.get(4));
+//
+//    }
 
 }
