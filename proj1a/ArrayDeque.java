@@ -51,7 +51,7 @@ public class ArrayDeque <T>{
             if(need_resizedown()){
                 resizedown();
             }
-            return list[index];
+            return list[last];
         }
         public T removeFirst(){
             if(isEmpty()){
@@ -62,9 +62,6 @@ public class ArrayDeque <T>{
             T first=list[0];
             list=new_list;
             index-=1;
-            if(need_resizedown()){
-                resizedown();
-            }
             return first;
         }
         public boolean isEmpty(){
@@ -85,11 +82,14 @@ public class ArrayDeque <T>{
         private boolean need_resizedown(){
             return (list.length>16&&list.length>4*index);
         }
-        public int capacity(){
+        private int capacity(){
             return list.length;
         }
 
 
-
+    public static void main(String[] args){
+            ArrayDeque<Integer> list=new ArrayDeque<>();
+            System.out.println(list.get(0));
+    }
 
 }

@@ -4,7 +4,7 @@ public class LinkedListDeque<T> {
         T value;
         intnode next;
 
-        public intnode(T x) {
+        private intnode(T x) {
             prev = null;
             next = null;
             value = x;
@@ -85,6 +85,9 @@ public class LinkedListDeque<T> {
             sential.next.prev = sential;
         }
         size-=1;
+        if(isEmpty()){
+            last=new intnode(null);
+        }
         return first_value;
     }
 
@@ -97,6 +100,9 @@ public class LinkedListDeque<T> {
         last.prev.next=null;
         last=last.prev;
         size-=1;
+        if(isEmpty()){
+            last=new intnode(null);
+        }
         return last_value;
     }
 
@@ -115,6 +121,14 @@ public class LinkedListDeque<T> {
             }while (corrent.next!=null);
         }
     }
+    public static void main(String[] args){
+        LinkedListDeque<Integer> list=new LinkedListDeque<>();
+        list.addLast(0);
+//        System.out.println(list.removeFirst());
+        list.addFirst(2);
+//        System.out.println(list.removeFirst());
+        System.out.println(list.getRecursive(0));
 
+    }
 
 }
