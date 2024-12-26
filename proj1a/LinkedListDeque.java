@@ -42,8 +42,9 @@ public class LinkedListDeque<T> {
             last.next = corrent;
             corrent.prev = last;
             last = corrent;
+            size += 1;
         }
-        size += 1;
+
     }
 
     public T get(int x) {
@@ -120,13 +121,17 @@ public class LinkedListDeque<T> {
 //    public static void main(String[] args){
 //        LinkedListDeque<Integer> list=new LinkedListDeque<>();
 //        list.addLast(0);
+////        list.removeLast();
 //        list.addLast(1);
-//        list.addLast(3);
+////        list.removeLast();
+////        list.addLast(1);
+////        list.addLast(3);
 ////        System.out.println(list.removeFirst());
 //        list.addFirst(5);
 //        list.addFirst(2);
-////        System.out.println(list.removeFirst());
-//        System.out.println(list.get(4));
+//        list.addFirst(3);
+//        System.out.println(list.removeLast());
+//        System.out.println(list.removeFirst());
 //
 //    }
 

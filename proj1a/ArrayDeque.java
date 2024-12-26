@@ -46,12 +46,12 @@ public class ArrayDeque <T>{
             if(isEmpty()){
                 return null;
             }
-            int last=index;
+            int last=index-1;
             index--;
             if(need_resizedown()){
                 resizedown();
             }
-            return list[last-1];
+            return list[last];
         }
         public T removeFirst(){
             if(isEmpty()){
@@ -76,7 +76,7 @@ public class ArrayDeque <T>{
             double new_size= list.length*0.5;
             int n_s=(int) new_size;
             T[] new_list=(T[]) new Object[n_s];
-            System.arraycopy(list,0,new_list,0,index);
+            System.arraycopy(list,0,new_list,0,index+1);
             list=new_list;
         }
         private boolean need_resizedown(){
@@ -88,12 +88,31 @@ public class ArrayDeque <T>{
 
 
 //    public static void main(String[] args){
-//            ArrayDeque<Integer> list=new ArrayDeque<>();
-//            list.addFirst(1);
-//            list.addFirst(2);
-//            list.addLast(3);
-//            System.out.println(list.removeLast());
-//            System.out.println(list.get(0));
+//        ArrayDeque<Integer> ArrayDeque=new ArrayDeque<>();
+//        ArrayDeque.addFirst(0);
+//        ArrayDeque.removeLast();
+//        ArrayDeque.addFirst(2);
+//        ArrayDeque.addFirst(3);
+//        ArrayDeque.removeLast();
+//        ArrayDeque.get(0)   ;
+//        ArrayDeque.addLast(6);
+//        ArrayDeque.removeLast()   ;
+//        ArrayDeque.addLast(8);
+//        ArrayDeque.removeLast();
+//        ArrayDeque.removeLast();
+//        ArrayDeque.addFirst(11);
+//        ArrayDeque.addFirst(12);
+//        ArrayDeque.addFirst(13);
+//        ArrayDeque.removeFirst();
+//        ArrayDeque.removeLast();
+//        ArrayDeque.addFirst(16);
+//        ArrayDeque.addFirst(17);
+//        ArrayDeque.addFirst(18);
+//        ArrayDeque.addLast(19);
+//        ArrayDeque.get(3);
+//        ArrayDeque.addFirst(21);
+//        System.out.println(ArrayDeque.removeLast());
+//        System.out.println(ArrayDeque.removeLast());
 //    }
 
 }
