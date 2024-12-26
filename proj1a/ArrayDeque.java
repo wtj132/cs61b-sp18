@@ -4,11 +4,13 @@ public class ArrayDeque <T>{
 
         private T [] list;
         private int index;
+        private int first;
+//        private int capacity=8;
 
 
         public ArrayDeque(){
             index=0;
-            list=(T[]) new Object[100];
+            list=(T[]) new Object[8];
         }
         public void addLast(T x){
             if(index==list.length){
@@ -17,6 +19,7 @@ public class ArrayDeque <T>{
             list[index]=x;
             index+=1;
         }
+
         public void addFirst(T x){
             if(index==list.length){
                 resize();
@@ -29,7 +32,7 @@ public class ArrayDeque <T>{
         }
 
         public T get(int x){
-            return list[x-1];
+            return list[x];
         }
         public int size(){
             return index;
@@ -40,16 +43,28 @@ public class ArrayDeque <T>{
             list=new_list;
         }
         public T removeLast(){
+            if(isEmpty()){
+                return null;
+            }
             int last=index;
             index--;
+            if(need_resizedown()){
+                resizedown();
+            }
             return list[index];
         }
         public T removeFirst(){
+            if(isEmpty()){
+                return null;
+            }
             T[] new_list=(T[]) new Object[list.length-1];
             System.arraycopy(list,1,new_list,0,list.length-1);
             T first=list[0];
             list=new_list;
             index-=1;
+            if(need_resizedown()){
+                resizedown();
+            }
             return first;
         }
         public boolean isEmpty(){
@@ -59,6 +74,19 @@ public class ArrayDeque <T>{
             for(int i=0;i<index;i++){
                 System.out.println(list[i]+" ");
             }
+        }
+        private void resizedown(){
+            double new_size= list.length*0.5;
+            int n_s=(int) new_size;
+            T[] new_list=(T[]) new Object[n_s];
+            System.arraycopy(list,0,new_list,0,index);
+            list=new_list;
+        }
+        private boolean need_resizedown(){
+            return (list.length>16&&list.length>4*index);
+        }
+        public int capacity(){
+            return list.length;
         }
 
 

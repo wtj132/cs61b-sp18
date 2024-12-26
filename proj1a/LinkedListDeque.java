@@ -14,10 +14,13 @@ public class LinkedListDeque<T> {
     private intnode sential;
     private int size;
     private intnode last;
+    private intnode c;
 
     public LinkedListDeque() {
         sential = new intnode(null);
+        last=new intnode(null);
         size = 0;
+        c=sential;
     }
 
     public void addFirst(T x) {
@@ -33,9 +36,15 @@ public class LinkedListDeque<T> {
 
     public void addLast(T x) {
         intnode corrent = new intnode(x);
-        last.next = corrent;
-        corrent.prev = last;
-        last = corrent;
+        if(last.prev==null){
+            last=corrent;
+            last.prev=sential;
+            sential.next=last;
+        }else {
+            last.next = corrent;
+            corrent.prev = last;
+            last = corrent;
+        }
         size += 1;
     }
 
@@ -52,15 +61,24 @@ public class LinkedListDeque<T> {
         }
     }
 
-    private intnode c=sential;
+
     public T getRecursive(int x){
-        if(x==0){
+        if(isEmpty()){
+            return null;
+        }
+        c=c.next;
+        if (x == 0) {
             return c.value;
         }
-        return getRecursive(x-1);
+        return getRecursive(x - 1);
+
     }
 
     public T removeFirst(){
+        if(isEmpty()){
+            last=new intnode(null);
+            return null;
+        }
         T first_value=sential.next.value;
         sential.next=sential.next.next;
         if(sential.next!=null) {
@@ -71,11 +89,15 @@ public class LinkedListDeque<T> {
     }
 
     public T removeLast(){
-        T last_vlaue=last.value;
+        if(isEmpty()){
+            last=new intnode(null);
+            return null;
+        }
+        T last_value=last.value;
         last.prev.next=null;
         last=last.prev;
         size-=1;
-        return last_vlaue;
+        return last_value;
     }
 
     public int size(){
@@ -93,4 +115,6 @@ public class LinkedListDeque<T> {
             }while (corrent.next!=null);
         }
     }
+
+
 }
