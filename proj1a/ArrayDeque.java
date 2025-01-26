@@ -1,6 +1,6 @@
 import java.rmi.server.ObjID;
 
-public class ArrayDeque <T>{
+public class ArrayDeque <T> implements Deque<T>{
 
         private T [] list;
         private int index;
